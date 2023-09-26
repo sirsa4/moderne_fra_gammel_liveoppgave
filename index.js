@@ -90,17 +90,18 @@ const list = [
    *
    */
   console.log("==============Default verdi challenge============");
-  function defaultValue(x, y) {
+  function defaultValue(x, y = 1) {
     return x / y;
   }
   
-  console.log(defaultValue(3)); // Skal gi 3
+  console.log("Default med: "+defaultValue(3)); // Skal gi 3
   
   const students = ["Lars", "Tiril", "Finn"];
   const selectedStudents = [];
   
   for (let index = 0; index < students.length; index++) {
     console.log(students[index].length);
+
     if (students[index].length > 4) {
       selectedStudents.push(students[index]);
     }
@@ -121,11 +122,18 @@ const list = [
   ];
   
   let sum = 0;
+  console.log("Sum: "+sum);
   
   // Deconstruct age
   function sumStudentAge(student) {
-    sum += student.age;
+    const {age} = student;
+    sum += age;
   }
+
+  console.log("==============deconstruct challenge============");
+  studentsWithAge.forEach(sumStudentAge);
+  
+  console.log("Sum: "+sum);
   
   // Bruk forEach
   for (let index = 0; index < studentsWithAge.length; index++) {
@@ -133,7 +141,11 @@ const list = [
     sumStudentAge(student);
   }
   
-  console.log(sum); // Skal gi 84
+  //console.log(sum); // Skal gi 84
+  console.log("==============forEach challenge============");
+  studentsWithAge.forEach(stud => {
+    console.log(stud.age);
+  })
   
   /**
    *
